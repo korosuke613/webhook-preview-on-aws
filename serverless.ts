@@ -1,5 +1,4 @@
 import type { AWS } from '@serverless/typescript';
-
 import loggingWebhook from './src/functions/loggingWebhook';
 
 const serverlessConfiguration: AWS = {
@@ -15,6 +14,8 @@ const serverlessConfiguration: AWS = {
   provider: {
     name: 'aws',
     runtime: 'nodejs14.x',
+    region: "ap-northeast-1",
+    memorySize: 256,
     apiGateway: {
       minimumCompressionSize: 1024,
       shouldStartNameWithService: true,
@@ -24,7 +25,6 @@ const serverlessConfiguration: AWS = {
     },
     lambdaHashingVersion: '20201221',
   },
-  // import the function via paths
   functions: { loggingWebhook },
 };
 
